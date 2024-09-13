@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'oracle-db-credentials', usernameVariable: 'DB_USER', passwordVariable: 'DB_PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'jenkins-sonar', usernameVariable: 'DB_USER', passwordVariable: 'DB_PASSWORD')]) {
                     sh 'mvn clean package -Ddb.url=${DB_URL} -Ddb.user=${DB_USER} -Dspring.datasource.password=${DB_PASSWORD}'
                 }
             }
