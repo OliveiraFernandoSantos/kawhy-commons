@@ -18,7 +18,7 @@ pipeline {
     stages {
         stage('Checkout SCM') {
             steps {
-                git branch: 'master', url: 'https://github.com/OliveiraFernandoSantos/commons-test.git'
+                git branch: 'master', url: 'https://github.com/OliveiraFernandoSantos/kawhy-commons.git'
             }
         }
         stage('Build') {
@@ -38,7 +38,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('sq1') { // Nome da instalação SonarQube configurada no Jenkins
-                    sh 'mvn sonar:sonar -Dsonar.projectKey=kawhy-commons -Dsonar.host.url=http://172.24.208.1:9000 -Dsonar.login=${SONAR_AUTH_TOKEN}'
+                    sh 'mvn sonar:sonar -Dsonar.projectKey=kawhy-commons-pipeline -Dsonar.host.url=http://172.24.208.1:9000 -Dsonar.login=${SONAR_AUTH_TOKEN}'
                 }
             }
         }
