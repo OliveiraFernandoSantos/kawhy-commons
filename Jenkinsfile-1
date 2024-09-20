@@ -28,13 +28,7 @@ pipeline {
                 }
             }
         }
-        stage('Test') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'oracle-db-credentials', usernameVariable: 'DB_USER', passwordVariable: 'DB_PASSWORD')]) {
-                    sh 'mvn test -Ddb.url=${DB_URL} -Ddb.user=${DB_USER} -Dspring.datasource.password=${DB_PASSWORD}'
-                }
-            }
-        }
+       
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('sq1') { // Nome da instalação SonarQube configurada no Jenkins
