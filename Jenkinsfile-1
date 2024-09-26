@@ -32,7 +32,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('sq1') { // Nome da instalação SonarQube configurada no Jenkins
-                    sh 'mvn sonar:sonar -Dsonar.projectKey=kawhy-commons-pipeline -Dsonar.host.url=http://172.24.208.1:9000 -Dsonar.login=${SONAR_AUTH_TOKEN}'
+                    sh 'mvn sonar:sonar -Dsonar.projectKey=kawhy-commons-pipeline -Dsonar.host.url=http://172.24.208.1:5053 -Dsonar.login=${SONAR_AUTH_TOKEN}'
                 }
             }
         }
